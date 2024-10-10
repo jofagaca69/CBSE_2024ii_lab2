@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ISBN</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Tarea</h1>
+    <form method="POST" action="/tasks">
+        <label for="name">Nombre:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="description">Descripción:</label><br>
+        <textarea id="description" name="description"></textarea><br>
+        <button type="submit">Crear</button>
+    </form>
+
+    <table>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.id }}</td>
+                <td>{{ task.name }}</td>
+                <td>{{ task.description }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <form method="POST" action="/update_task">  
+        <label for="id_update">ID de la tarea a actualizar:</label><br>
+        <input type="number" id="id_update" name="id_update" required><br> 
+        <label for="name_update">Nombre:</label><br>
+        <input type="text" id="name_update" name="name_update"><br>
+        <label for="description_update">Descripción:</label><br>
+        <textarea id="description_update" name="description_update"></textarea><br>
+        <button type="submit">Actualizar</button>
+    </form>
+</body>
+</html>
